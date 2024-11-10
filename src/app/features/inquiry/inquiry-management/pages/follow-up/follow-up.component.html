@@ -1,0 +1,561 @@
+<!-- <app-loader *ngIf="spinnerLoading"></app-loader> -->
+<!-- <alert *ngIf="showAlert" type="danger" class="dashboard-page-alert" [dismissible]="true"> -->
+  <!-- <div class="container ps-0">{{ alertMessage }}</div>
+</alert> -->
+<div class="container quote-details">
+  <div #hidden>
+    <!-- <xchange-breadcrumb [breadcrumbItems]="breadcrumbItems"></xchange-breadcrumb> -->
+  </div>
+  <div class="col-md-12 mb-0 mt-4">
+    <div class="row" #hidden>
+      <div class="col-12 col-sm-5" >
+        <!-- <xchange-icon-button icon="back" label="Back To Quotes"></xchange-icon-button> -->
+      </div>
+      <div class="col-12 col-sm-7 d-flex justify-content-end icon-sec">
+        <div class="d-flex">
+          <div >
+            <span class="mohawak-icon print-icon back-i"></span>Print
+          </div>
+          <div >
+            <span class="mohawak-icon pdf-icon back-i"></span>View PDF
+          </div>
+          <div >
+            <span class="mohawak-icon share-icon back-i"></span>Share
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="_card-container print-content" id="print-content">
+    <img
+      class="print-element"
+      src="/assets/images/logo-residential-dark.png"
+      width="250"
+      style="margin: 40px 0px"
+       />
+    
+    <h2 class="title">Quote #</h2>
+    <hr />
+
+    <div class="row mt-4">
+      <div class="col-12 col-sm-12">
+        <div class="row">
+          <div class="col-12 col-sm-4 mt-3 h-print">
+            <h4>Status</h4>
+          
+          </div>
+
+          <div class="col-12 col-sm-4 mt-3 h-print">
+            <h4>Expiration Date</h4>
+            <!-- <p>{{ quote?.expirationTime | date : "MM/dd/yyyy" }}</p> -->
+          </div>
+
+          <div class="col-12 col-sm-4 mt-3 h-print" >
+            <h4>Shipping Address</h4>
+             
+            
+          </div>
+          <div class="col-12 col-sm-4 mt-3 h-print" >
+            <h4>Shipping Address</h4>
+              <span >
+               NA
+              </span>
+          </div>
+
+          <div class="col-12 col-sm-4 mt-3 h-print">
+            <h4>Job Location</h4>
+           
+          </div>
+
+          <div class="col-12 col-sm-4 mt-3 h-print">
+            <h4>End User</h4>
+         
+          </div>
+
+          <div class="col-12 col-sm-4 mt-3 h-print">
+            <h4>Submitted For</h4>
+           
+          </div>
+          <div class="col-12 col-sm-4 mt-3 h-print">
+            <h4>Shipping Method</h4>
+       
+          </div>
+          <div class="col-12 col-sm-4 mt-3 h-print">
+            <h4>ShipVia</h4>
+           
+          </div>
+          <div class="col-12 col-sm-4 mt-3 h-print">
+            <h4>Shipping Warehouse</h4>
+           
+          </div>
+          <div class="col-12 col-sm-4 mt-3 h-print">
+            <h4>Inco Terms</h4>
+           
+          </div>
+
+          <div class="col-12 col-sm-4 mt-3 h-print">
+            <h4>Market Segment</h4>
+          
+          </div>
+
+          <div class="col-12 col-sm-4 mt-3 h-print">
+            <h4>Contact Email</h4>
+          
+          </div>
+          <div class="col-12 col-sm-4 mt-3 h-print">
+            <h4>Creation Date</h4>
+            
+          </div>
+        
+            <div class="col-12 col-sm-4 mt-3 h-print">
+              <h4>Submitted By:</h4>
+            
+            </div>
+          
+          </div>
+          <div class="col-12 col-md-6 col-sm-6 mb-4">
+              <div class="row pt-0 acco-content">
+                <div
+                
+                  class="col-md-12 info-header cursor-pointer col-md-11 d-flex justify-content-between align-items-center"
+                >
+                  <h4 class="mb-0">Saved Comments</h4>
+                  <!-- <span
+                    [attr.aria-expanded]="!commentsFlag"
+                    aria-controls="commentsBtn"
+                  >
+                    <h6 *ngIf="commentsFlag" class="icon-h d-flex justify-content-center">
+                      <span class="mohawak-icon angle-left-icon up-icon"></span>
+                    </h6>
+                    <h6 *ngIf="!commentsFlag" class="icon-h d-flex justify-content-center">
+                      <span class="mohawak-icon angle-left-icon down-icon"></span>
+                    </h6>
+                  </span> -->
+                </div>
+                <div
+                  class="mt-2 row"
+                  id="commentsBtn"
+                  
+                
+                >
+                  <div class="mb-2" >
+                    <div class="row" >
+                      <p class="mb-1">hhhi</p>
+                    </div>
+                  </div>
+                    <div class="row mb-2" >
+                      <p class="text-center mb-1">No Saved Comments</p>
+                    </div>
+                </div>
+              </div>
+                <!-- <div class="col-12 col-sm-4 mt-3" #hidden>
+                  <ng-select placeholder="Saved Comments" bindLabel="status" autofocus bindValue="id">
+                    <ng-option *ngFor="let item of comments">
+                      {{ item?.author?.name }}: {{ item?.text }} ({{
+                      item.creationDate | date : "MM/dd/yyyy"
+                      }})</ng-option>
+                  </ng-select>
+                </div> -->
+          </div>
+              <div class="row">
+
+                <div class="col-12 col-sm-4 mt-3 " #hidden>
+                  <h4 class="position-relative">
+                    Comments
+                    <ng-container >
+                      <span
+                        tooltip="Saved Comments"
+                        class="mohawak-icon help-icon help-info red-question-mark"
+                      ></span>
+                    </ng-container>
+                  
+                  </h4>
+
+                  <textarea type="textarea"  placeholder="Type Here" class="form-control w-100 mb-2"
+                    >
+                  </textarea>
+                
+                </div>
+                </div>
+                <div class="row">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-5 col-xl-4 mt-2" #hidden>
+                  <button  class="btn btn-primary w-100">
+                    Save Comments
+                  </button>
+                </div>
+              </div>
+          </div>
+
+          
+        </div>
+
+    <div >
+      <div class="card mt-4" >
+        <div class="card-header mb-2 dark">
+          <h4 class="text-white d-inline">
+
+          </h4>
+          <div class="float-end mohawk-logo text-end">
+          
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-7 mt-2">
+              <div class="row">
+                <div class="col-sm-3 col-md-4 col-lg-5 col-xl-3">
+                  <div class="col-xs-6 col-sm-12 mobile-view">
+                    <img
+                      [src]=""
+                    
+                      class="card-img-top img"
+                      
+                    />
+                    <div class="add-remove-btns" #hidden>
+                      <button 
+                        #hidden
+                        type="button"
+                        class="btn btn-secondary w-100 mt-2"
+                      
+                      >
+                        Remove
+                      </button>
+                      <button
+                        #hidden
+                        type="button"
+                        class="btn btn-primary btn-lg mt-2 below-margin w-100"
+                      
+                       
+                      >
+                        Add Accessories
+                      </button>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="row div-p text-f-s col-sm-9 col-md-8 col-lg-7 col-xl-9">
+                  <div class="col-6 col-sm-6 col-lg-6 col-xl-4 e-print">
+                    <h4>Color</h4>
+                    <p>
+                       <br />
+                      <a #hidden class="text-decoration-none" href="javascript:void(0)"
+                        >change</a>
+                    </p>
+                  </div>
+
+                  <div class="e-print col-6 col-sm-6 col-lg-6 col-xl-4">
+                  
+                  </div>
+                  
+                  <div class="e-print col-6 col-sm-6 col-lg-6 col-xl-4" >
+                    <h4>Availability</h4>
+                    <p>/p>
+                  </div>
+
+                  <div class="e-print col-6 col-sm-6 col-lg-6 col-xl-4">
+                    <h4>Backing</h4>
+                    <p></p>
+                  </div>
+                  
+                  <div class="e-print col-6 col-sm-6 col-lg-6 col-xl-4">
+                    <h4>Unit Price </h4>
+                    <p></p>
+                  </div>
+
+                  <div class="e-print col-6 col-sm-6 col-lg-6 col-xl-4">
+                    <h4>Line Price</h4>
+                    <p></p>
+                  </div>
+                  <div class="e-print col-6 col-sm-6 col-lg-6 col-xl-4" >
+                    <h4>Backorder Date</h4>
+                  
+                  </div>
+                  <div class="e-print col-6 col-sm-6 col-lg-6 col-xl-4" >
+                    <h4>Pattern Repeat</h4>
+                   
+                  </div>
+                  <div class="e-print col-6 col-sm-6 col-lg-6 col-xl-4" >
+                    <h4>Shipping Method</h4>
+                    
+                  </div>
+                  <div class="e-print col-6 col-sm-6 col-lg-6 col-xl-4" >
+                    <h4>Shipping Warehouse</h4>
+                   
+                  </div>
+                  <div class="e-print col-6 col-sm-6 col-lg-6 col-xl-4" >
+                    <h4>ShipVia</h4>
+                    <p></p>
+                  </div>
+                  <div class="e-print col-6 col-sm-6 col-lg-6 col-xl-4" >
+                    <h4>Inco Terms</h4>
+                    <p></p>
+                  </div>
+                  <div class="e-print col-6 col-sm-6 col-lg-6 col-xl-4" >
+                    <h4>Terms Reason</h4>
+                   
+                  </div>
+                  <div class="e-print col-6 col-sm-6 col-lg-6 col-xl-4" >
+                    <h4>Notes</h4>
+                    <p></p>
+                  </div>
+                  <!-- *ngIf="item.checkUom =='RO'" -->
+                  <div class="e-print col-12 col-sm-12 col-lg-6 col-xl-12">
+                    <form >
+                      <div class="row mt-2">
+                        <div class="col-lg-4 col-md-12">
+                          <h4> Target Length </h4>
+                          <input type="text" class="form-control" 
+                         
+                            value="" />
+                        </div>
+                        <div class="col-lg-4 ">
+                          <h4> Min Length</h4>
+                          <input type="text" class="form-control" placeholder="180.0" formControlName="minLengthFT"
+                          
+                            value="" />
+                        </div>
+                        <div class="col-lg-4  col-md-12">
+                          <h4>Max Length</h4>
+                          <input type="text" class="form-control" placeholder="210.0" formControlName="maxLengthFT"
+                          
+                            value=""/>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="e-print col-6 col-sm-6 col-lg-6 col-xl-4 print-show">
+                      <h4>Order QTY </h4>
+                      <p></p>
+                  </div>
+                  <div class="e-print col-6 col-sm-6 col-lg-6 col-xl-4 print-show">
+                      <h4>Quantity Calc.</h4>
+                      <p></p>
+                  </div>
+                  <div class="e-print col-6 col-sm-6 col-lg-6 col-xl-4 print-show">
+                      <h4>Specific Dye Lot</h4>
+                      <p></p>
+                  </div>
+                </div>
+
+                <div class="col-12 col-sm-12 col-lg-12 col-xl-12 mt-2">
+                 
+                </div>
+
+              </div>
+            </div>
+
+            
+
+            <div class="col-12 col-sm-12 col-md-8 col-lg-5 mt-2 print-hide">
+              <form  class="form-cls">
+                <div class="row fm-row">
+                  <div class="q-print col-12 col-sm-6 col-lg-6 col-xl-3">
+                    <h4>Order QTY</h4>
+                    <p></p>
+                    <input #feet id="feet" name="feet" type="number" placeholder="0" min="1" class="form-control w-100"
+                     
+                      formControlName="selectedAmount" />
+                  </div>
+
+                  <div class="q-print col-12 col-sm-6 col-lg-6 col-xl-3">
+                    <h4>Quantity Calc.</h4>
+                    <p> item.uom </p>
+                    
+                  </div>
+                  <div class="q-print col-12 col-sm-6 col-lg-6 col-xl-6">
+                    <h4>Specific Dye Lot</h4>
+                    <div class="mt-5"></div>
+                    <input type="text"  placeholder="Optional"
+                      class="form-control w-100" value="" />
+                  </div>
+
+                  <div class="#hidden col-12 col-sm-6 col-lg-6 col-xl-12">
+                    <div class="row">
+                      <div class="col-12 col-sm-12 col-lg-6 col-xl-4" #hidden>
+                        <button disabled
+                          
+                         type="button" class="btn btn-secondary mt-2">
+                          SAVE QTY
+                        </button>
+                      </div>
+                      <div class="col-12 col-sm-12 col-lg-6 col-xl-8 mb-2" #hidden>
+                        <button #hidden type="button" disabled 
+                        class="btn btn-primary w-100 mt-2">
+                          CHECK AVAILABILITY / INVENTORY
+                        </button>
+                      </div>
+                   
+                    </div>
+                  </div>
+                </div>
+
+              </form>
+            </div>
+          </div>
+
+<!-- 
+          <accordion [isAnimated]="true" class="bx-accordian my-4 px-4" *ngIf="
+              (item?.backOrderedDate === '' ||
+                item?.backOrderedDate === undefined) &&
+              item?.solution &&
+              item?.solution.length > 0 &&
+              item?.solution[0]?.rollAssignment != 'ROLL'
+            ">
+            <accordion-group [isOpen]="false">
+              <header accordion-heading class="bx-accordian-header p-2 w-100 d-flex justify-content-center"
+                (click)="solutionDetailsClicked()">
+                <div class="show arrow">
+                  Show Solutions Details
+                  <span class="mohawak-icon angle-left-icon down-icon"></span>
+                </div>
+                <div class="hide arrow">
+                  Hide Solutions Details
+                  <span class="mohawak-icon angle-left-icon up-icon"></span>
+                </div>
+                <ng-container *ngIf="!isSolutionDetailsClicked">
+                  <span tooltip="Click here to see your quantity, dyelot or roll number"
+                    class="mohawak-icon help-icon help-info red-question-mark"></span>
+                </ng-container>
+              </header>
+
+              <table class="black-header-table-one">
+                <thead>
+                  <tr>
+                    <th>Order Qty (LF)</th>
+                    <th>Order Qty (Sq Yrd)</th>
+                    <th>
+                      Assigned Qty <br />
+                      <mat-slide-toggle class="tp-margin" (change)="showAssignedSqFtYrd($event)">
+                        <span *ngIf="showAssignedSpec === false">Sq Yd</span>
+                        <span *ngIf="showAssignedSpec === true">Sq Ft</span>
+                      </mat-slide-toggle>
+                    </th>
+                    <th>Dyelot</th>
+                    <th>Roll #</th>
+                    <th>Plant</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let solution of item?.solution || []">
+                    <td>{{ solution?.rollAssigned || "NA" }}</td>
+                    <td>{{ solution?.rollAssignedInSY || "NA" }}</td>
+                
+                    <td>
+                      <ng-container *ngIf="showAssignedSpec === false">
+                        {{ solution?.assignedQuantity || "NA" }}
+                      </ng-container>
+                      <ng-container *ngIf="showAssignedSpec === true">
+                        {{ solution?.assignedQuantityInSF || "NA" }}
+                      </ng-container>
+                    </td>
+
+                    <td>{{ solution?.dyeLot }}</td>
+                    <td>{{ solution?.rollNumber }}</td>
+                    <td>{{ solution?.plant }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </accordion-group>
+          </accordion>
+
+          <accordion [isAnimated]="true" class="bx-accordian my-4 px-4" *ngIf="
+              (item?.backOrderedDate === '' ||
+                item?.backOrderedDate === undefined) &&
+              item?.solution &&
+              item?.solution.length > 0 &&
+              item?.solution[0]?.rollAssignment == 'ROLL'
+            ">
+            <accordion-group [isOpen]="false">
+              <header accordion-heading class="bx-accordian-header p-2 w-100 d-flex justify-content-center"
+                (click)="solutionDetailsClicked()">
+                <div class="show arrow">
+                  Show Solutions Details
+                  <span class="mohawak-icon angle-left-icon down-icon"></span>
+                </div>
+                <div class="hide arrow">
+                  Hide Solutions Details
+                  <span class="mohawak-icon angle-left-icon up-icon"></span>
+                </div>
+                <ng-container *ngIf="!isSolutionDetailsClicked">
+                  <span tooltip="Click here to see your quantity, dyelot or roll number"
+                    class="mohawak-icon help-icon help-info red-question-mark"></span>
+                </ng-container>
+              </header>
+
+              <table class="black-header-table-one">
+                <thead>
+                  <tr>
+                    <th>Order Qty (Min / Max)</th>
+
+                    <th>Assigned Qty</th>
+                    <th>Dyelot</th>
+                    <th>Roll #</th>
+                    <th>Plant</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let solution of item?.solution || []">
+                    <td>
+                      {{ solution?.rollAssigned || "NA" }}({{
+                      solution?.orderMax
+                      }}/{{ solution?.orderMin }})
+                    </td>
+                    <td>{{ solution?.rollAssignedInSY || "NA" }}</td>
+                 
+
+                    <td>{{ solution?.dyeLot }}</td>
+                    <td>{{ solution?.rollNumber }}</td>
+                    <td>{{ solution?.plant }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </accordion-group>
+          </accordion> -->
+
+ 
+
+      
+
+  
+
+    
+
+     
+          <div class="row">
+            <div class="col-12 col-sm-6 col-md-4 col-lg-6">
+              <p class="text-f-s mt-2 p-info">
+                Unless a specific dyelot is specified, assigned inventory may be
+                substituted during shipment (if necessary).
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div   class="row mt-4 justify-content-center">
+      <div class="col-12 col-md-6 col-lg-2">
+        <button class="btn btn-secondary mb-3" >
+          BACK TO QUOTES
+        </button>
+      </div>
+      <div class="col-12 col-md-6 col-lg-2">
+        <button class="btn btn-secondary mb-3"  >
+          REJECT QUOTE
+        </button>
+      </div>
+      <div class="col-12 col-md-6 col-lg-2">
+        <button  class="btn btn-outline-secondary mb-3" >
+          CANCEL QUOTE
+        </button>
+      </div>
+      <div class="col-12 col-md-6 col-lg-2">
+        <button  class="btn btn-primary mb-3">
+          CONVERT TO ORDER
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+

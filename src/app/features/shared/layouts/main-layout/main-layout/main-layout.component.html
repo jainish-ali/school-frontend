@@ -1,0 +1,62 @@
+<div class="main">
+    <!-- Container for sidebar(s) + page content -->
+    <div #appHeader><site-header (exitEvent)="closeSidebar($event)"></site-header></div>
+    <ng-sidebar-container
+    [allowSidebarBackdropControl]="true"
+    (onBackdropClicked)="hideSidebar()"
+    [backdropClass]="sidenavConfig.backdropClass"
+    class="main-side-bar-container"
+    [style.height.px]="calculateMinHeight(appHeader)"
+    >
+      <!-- A sidebar -->
+      <ng-sidebar
+      #sidebar
+      [(opened)]="_opened"
+      [showBackdrop]="sidenavConfig.showBackdrop"
+      [mode]="sidenavConfig.mode"
+      *ngIf="!hideSideBar"
+      [closeOnClickBackdrop]="sidenavConfig.closeOnClickBackdrop"
+      [sidebarClass]="sidenavConfig.sidebarClass"
+      [dockedSize]="sidenavConfig.dockedSize"
+      [dock]="sidenavConfig.dock"
+      >
+        <aside class="layout-side-bar" >
+          <xchange-sidenav class="overflow-x-axis"></xchange-sidenav>
+        </aside>
+      </ng-sidebar>
+      <!-- Page content -->
+      <div ng-sidebar-content  class="page custom-scrollbar" #mainPage id="mainPage">
+        <div class="w-100">
+           <!--  Customer Messages -->
+          <ng-container *ngIf="showCustomerMessages">
+            <div class="row customer-messages-header">
+              <div class="col-6 systme-msg">
+                <p class="mt-2 mb-1">System Messages (5)</p>
+              </div>
+              <div class="col-6 hide-all">
+                <p class="mt-2 mb-1" (click)="hideCustomerMsg()">Hide All</p>
+              </div>
+            </div>
+  
+            <div class="customer-messages-carousel mb-1">
+              <owl-carousel-o [options]="sliderOptionsForCustomerMsg" #owlCarousel>
+                <ng-template carouselSlide *ngFor="let alert of salePersonNotifications">
+                  <alert type="" class="dashboard-page-alert" [dismissible]="true" (onClosed)="onDismissAlert(alert)">
+                    <div class="alert-content">
+                      <div class="alert-img"><img [src]="alert.src"
+                        alt="Customer Message"
+                      /></div>
+                      <div class="alert-msg">{{alert.msg}}</div>
+                    </div>
+                  </alert>
+                </ng-template>
+              </owl-carousel-o>
+            </div>
+          </ng-container>
+          <router-outlet></router-outlet>
+        </div>
+        <site-footer></site-footer>
+      </div>
+    </ng-sidebar-container>
+  </div>
+  

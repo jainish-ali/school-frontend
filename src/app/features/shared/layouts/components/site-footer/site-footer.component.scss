@@ -1,0 +1,30 @@
+@import "src/styles/mixins/breakpoints";
+
+:host {
+  width: 100%;
+  align-self: flex-end;
+}
+
+.footer-menu {
+  flex-wrap: wrap;
+
+  li {
+    a {
+      font-size: 16px;
+    }
+  }
+
+  @include breakpoint-range($max: xl) {
+    & > li {
+      margin-bottom: 5px;
+      width: 100%;
+
+      & > a {
+        border-right: none;
+      }
+    }
+  }
+}
+.copy-right-text {
+  font-size: 16px;
+}

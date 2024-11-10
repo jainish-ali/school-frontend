@@ -1,0 +1,96 @@
+<app-loader *ngIf="spinnerLoading"></app-loader>
+<div class="container">
+    <sky-breadcrumb [breadcrumbItems]="breadcrumbItems"></sky-breadcrumb>
+    <!-- <app-alerts [alertData]="alertData" [alertType]="alertType" *ngIf="alertTrigger"></app-alerts> -->
+    <h2 class="text-center mb-4 mt-4">Inquiry Form</h2>
+    <div class="row mb-3">
+        <div class="col-lg-12 back-to" routerLink="/inquiry/inquirylist">
+            <span class="mohawak-icon angle-left-icon back-i" ></span>Back To Your
+            List
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <form [formGroup]="addUserForm" >
+            <div class="_card-container">
+                <div class="row mb-4 brd">
+                    <div class="head-sec">Create Inquiry</div>
+                    <div class="col-md-4 mb-3">
+                      <h4> Customer Name*</h4>
+                      <input type="text" formControlName="name" placeholder="Type Here" class="form-control" />
+                      <div *ngIf="addUserForm.controls['name'].touched && addUserForm.controls['name'].invalid"
+                        class="form-text text-danger">
+                        <div *ngIf="addUserForm.controls['name'].errors?.['required']">
+                            Name Type  is
+                          required.</div>
+                      </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <h4>Mobile*</h4>
+                        <input type="number" [maxlength]="10" formControlName="mobile" placeholder="Type Here" class="form-control" />
+                        <div *ngIf="addUserForm.controls['mobile'].touched && addUserForm.controls['mobile'].invalid"
+                          class="form-text text-danger">
+                          <div *ngIf="addUserForm.controls['mobile'].errors?.['required']">
+                              Mobile Type  is
+                            required.</div>
+                        </div>
+                      </div>
+                      <div class="col-md-4 mb-3">
+                        <h4>Email*</h4>
+                        <input type="text" formControlName="email" placeholder="Type Here" class="form-control" />
+                      
+                      </div>
+                      <div class="col-md-4 mb-3">
+                        <h4>Inquiry type*</h4>
+                        <ng-select placeholder="#Allow" formControlName="type" >
+                            <ng-option *ngFor="let item of userType" [value]="item?.id" >{{
+                              item?.type_name
+                            }}</ng-option>
+                          </ng-select>
+                          <div *ngIf="addUserForm.controls['type'].touched && addUserForm.controls['type'].invalid"
+                          class="form-text text-danger">
+                          <div *ngIf="addUserForm.controls['type'].errors?.['required']">
+                            type Type
+                            required.</div>
+                        </div>
+                      </div>
+                      <div class="col-md-4 mb-3">
+                        <h4>Text*</h4>
+                        <input type="text"  formControlName="text" placeholder="Type Here" class="form-control" />
+                        <div *ngIf="addUserForm.controls['text'].touched && addUserForm.controls['text'].invalid"
+                          class="form-text text-danger">
+                          <div *ngIf="addUserForm.controls['text'].errors?.['required']">
+                            Text is
+                            required.</div>
+                        </div>
+                      </div>
+                      <div class="col-md-4 mb-3">
+                        <h4>Date*</h4>
+                        <input bsDatepicker type="text" formControlName="date" placeholder="Type Here" class="form-control" />
+                        <div *ngIf="addUserForm.controls['date'].touched && addUserForm.controls['date'].invalid"
+                          class="form-text text-danger">
+                          <div *ngIf="addUserForm.controls['date'].errors?.['required']">
+                            date is
+                            required.</div>
+                        </div>
+                      </div>
+                  </div>
+                <div class="row align-center">
+                    <div class="col-md-3 btn-grid">
+                        <button class="btn btn-outline-secondary">
+                            Cancel
+                        </button>
+                    </div>
+                    <div class="col-md-3  btn-grid">
+                        <button    (click)="submit(addUserForm.value)" class="btn btn-primary" type="submit" [disabled]="!addUserForm.valid">
+                            ADD  
+                        </button>
+                    </div>
+                </div>
+             
+            </div>
+        </form>
+
+    </div>
+    
+</div>
