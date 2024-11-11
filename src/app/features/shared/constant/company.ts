@@ -1,15 +1,15 @@
-export const searchByCompany = [
+export const searchBy = [
     {
-        title: 'Name',
-        id: "customer_name",
+        title: 'School Name',
+        id: "SchoolName]",
     },
     {
         title: 'Mobile Number',
-        id: "phone_number",
+        id: "ContactNo",
     },
     {
-        title: 'email',
-        id: "email",
+        title: 'Email',
+        id: "EmailID",
     },
    
 ];

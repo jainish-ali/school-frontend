@@ -35,11 +35,11 @@ const routes: Routes = [
       ),
   },
   {
-    path: "spare",
+    path: "superadmin",
     component: MainLayoutComponent,
     loadChildren: () =>
-      import("./features/spare/spare.module").then(
-        (m) => m.SpareModule
+      import("./features/super-admin/super-admin.module").then(
+        (m) => m.SuperAdminModule
       ),
   },
 ];

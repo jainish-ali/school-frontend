@@ -1,0 +1,80 @@
+<app-loader *ngIf="spinnerLoading"></app-loader>
+<div class="container">
+  <h2 class="text-center mb-2">Manage School</h2>
+  <div class="_card-container">
+    <div class="row mb-2">
+      <div class="col-md-12">
+        <app-alert [alertData]="alertData" [alertType]="alertType" *ngIf="alertTrigger"></app-alert>
+      </div>
+    </div>
+    <div class="row">
+      <h4>All Schools</h4>
+      <div class="col-md-3 col-sm-6">
+        <ng-select placeholder="#Select By" (change)="onSearchBY($event)">
+          <ng-option *ngFor="let item of searchBy" [value]="item?.id">{{ item?.title }}</ng-option>
+        </ng-select>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <sky-search-control [isGlobalSearchEnabled]="false" (input)="onSearchSchools($event)" placeholder="Search"></sky-search-control>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <ng-select placeholder="#Search By Status" (change)="onStatusChange($event)">
+          <ng-option *ngFor="let item of status" [value]="item?.id">{{ item?.title }}</ng-option>
+        </ng-select>
+      </div>
+      <div class="col-md-3 col-sm-2">
+        <ng-select placeholder="#Search By filter">
+          <ng-option *ngFor="let item of limit" [value]="item?.id">{{ item?.title }}</ng-option>
+        </ng-select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10 col-lg-10"></div>
+      <div class="col-md-2 col-lg-2 d-grid align-items-end mt-2">
+        <button class="btn btn-primary w-100" routerLink="/superadmin/add-school">
+          ADD NEW SCHOOL
+        </button>
+      </div>
+    </div>
+    <div class="mt-4">
+      <ngx-table [configuration]="configuration" [data]="
+          allSchoolData.data
+            | paginate
+              : {
+                  id: 'pg1',
+                  itemsPerPage: tableItemsSize,
+                  currentPage: pageIndex,
+                  totalItems: totlRecords
+                }
+        "[columns]="columns">
+        <ng-template let-row let-index="index">
+          <td><a [routerLink]="['/school/details/', row?.SchoolID]" (click)="navigateToAddSchool(row?.SchoolID)">{{ row?.SchoolName }}</a></td>
+          <td>{{ row?.ContactNo }}</td>
+          <td>{{ row?.EmailID }}</td>
+          <td>{{ row?.Address }}</td>
+          <td>{{ row?.status }}</td>
+          <td>
+
+                <img class="sec_img" (click)="deleteSchool(row?.SchoolID, row?.SchoolName)" src="../../../../../assets/icons/delete.png" width="40px">
+          </td>
+        </ng-template>
+      </ngx-table>
+    </div>
+  </div>
+  <div class="row mb-4 mt-4">
+    <div class="d-flex justify-content-center">
+      <pagination-controls *ngIf="totlRecords > 0" id="pg1" [maxSize]="10" [responsive]="true" [nextLabel]="''"
+        [previousLabel]="''" (pageChange)="onTablePageChange($event)">
+      </pagination-controls>
+    </div>
+    <div class="col-md-12">
+        <p  class="text-center mb-4">
+            {{ totlRecords > 0 ? startValue : 0 }} -
+            {{ lastValue > totlRecords ? totlRecords : lastValue }}
+            OF {{ totlRecords > 0 ? totlRecords : 0 }} School
+        </p>
+      </div>
+  </div>
+
+
+</div>

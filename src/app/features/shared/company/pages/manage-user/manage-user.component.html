@@ -23,7 +23,7 @@
       <h4>All Company</h4>
       <div class="col-md-3 col-sm-6">
         <ng-select placeholder="#Select By"   (change)="onSearchBY($event)">
-          <ng-option *ngFor="let item of searchByCompany" [value]="item?.id" >{{
+          <ng-option *ngFor="let item of searchBy" [value]="item?.id" >{{
             item?.title
           }}</ng-option>
         </ng-select>

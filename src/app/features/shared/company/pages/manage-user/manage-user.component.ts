@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Columns, Config, DefaultConfig } from 'ngx-easy-table';
 import { CompanyService } from '../../services/company.service';
-import {searchByCompany, status, limit} from '../../../../shared/constant/company'
+import { status, limit, searchBy} from '../../../../shared/constant/company'
 import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { ConfirmationDialogComponent } from '../../../components/confirmation-dialog/confirmation-dialog.component';
 
@@ -11,7 +11,7 @@ import { ConfirmationDialogComponent } from '../../../components/confirmation-di
   styleUrls: ['./manage-user.component.scss'],
 })
 export class ManageUserComponent {
-  searchByCompany = searchByCompany;
+  searchBy = searchBy;
   status = status;
   limit = limit;
   public columns!: Columns[];

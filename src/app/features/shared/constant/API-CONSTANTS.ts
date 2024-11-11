@@ -11,5 +11,9 @@ export const API_CONSTANTS: any = {
   userbyid : 'master/userList?email={email}',
   createinquiry:"/inquiry/createinquiry",
   inquirylist:"inquiry/inquirylist",
-  deleteinquiry : "inquiry/delete/{id}"
+  deleteinquiry : "inquiry/delete/{id}",
+// school managemnet system
+  schools:'master/school',
+  deleteschool:'master/school/{schoolId}',
+  updateSchool:'master/school/{schoolId}',
   };

@@ -1,0 +1,113 @@
+<app-loader *ngIf="spinnerLoading"></app-loader>
+<div class="container">
+    <div class="header mb-3">
+        <div class="back-to" routerLink="/superadmin/school-list">
+            <span class="mohawak-icon angle-left-icon back-i" ></span>Back To School List
+        </div>
+        <div class="">
+            <sky-breadcrumb [breadcrumbItems]="breadcrumbItems"></sky-breadcrumb>
+        </div>
+    </div>
+    <h2 class="text-center mb-2 ">{{this.buttonName}}</h2>
+<div class="row mb-4">
+    <form [formGroup]="addSchoolForm">
+        <div class="_card-container">
+            <div class="row mb-4 brd">
+                <div class="head-sec">{{this.buttonName}} Details</div>
+
+                <div class="col-md-4 mb-3">
+                    <h4>School Name*</h4>
+                    <input type="text" formControlName="schoolName" placeholder="Type Here" class="form-control" />
+                    <div *ngIf="addSchoolForm.controls['schoolName'].touched && addSchoolForm.controls['schoolName'].invalid"
+                         class="form-text text-danger">
+                        <div *ngIf="addSchoolForm.controls['schoolName'].errors?.['required']">
+                            School Name is required.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <h4>Address*</h4>
+                    <input type="text" formControlName="address" placeholder="Type Here" class="form-control" />
+                    <div *ngIf="addSchoolForm.controls['address'].touched && addSchoolForm.controls['address'].invalid"
+                         class="form-text text-danger">
+                        <div *ngIf="addSchoolForm.controls['address'].errors?.['required']">
+                            Address is required.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <h4>Contact No*</h4>
+                    <input type="text" formControlName="contactNo" placeholder="Type Here" class="form-control" />
+                    <div *ngIf="addSchoolForm.controls['contactNo'].touched && addSchoolForm.controls['contactNo'].invalid"
+                         class="form-text text-danger">
+                        <div *ngIf="addSchoolForm.controls['contactNo'].errors?.['required']">
+                            Contact No is required.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <h4>Email ID*</h4>
+                    <input type="email" formControlName="emailID" placeholder="Type Here" class="form-control" />
+                    <div *ngIf="addSchoolForm.controls['emailID'].touched && addSchoolForm.controls['emailID'].invalid"
+                         class="form-text text-danger">
+                        <div *ngIf="addSchoolForm.controls['emailID'].errors?.['required']">
+                            Email ID is required.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <h4>Fax No</h4>
+                    <input type="text" formControlName="faxNo" placeholder="Type Here" class="form-control" />
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <h4>Website</h4>
+                    <input type="text" formControlName="website" placeholder="Type Here" class="form-control" />
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <h4>Logo</h4>
+                    <input type="text" formControlName="logo" placeholder="Type Here" class="form-control" />
+                </div>
+               
+                    <div class="col-md-4 col-sm-2" *ngIf="isStatusVisible">
+                        <h4>Status</h4>
+                        <ng-select
+                          placeholder="Status"
+                          formControlName="status"
+                          (change)="onStatusChange($event)"
+                        >
+                          <ng-option *ngFor="let item of status" [value]="item?.id">
+                            {{ item?.title }}
+                          </ng-option>
+                        </ng-select>
+                        <div *ngIf="addSchoolForm.get('status')?.invalid && addSchoolForm.get('status')?.touched" class="text-danger">
+                          Status is required.
+                        </div>
+                      </div>
+                      
+                
+            </div>
+
+            <div class="row align-center">
+                <div class="col-md-3 btn-grid">
+                    <button class="btn btn-outline-secondary" type="button">
+                        Cancel
+                    </button>
+                </div>
+                <div class="col-md-3 btn-grid">
+                    <button (click)="submit(addSchoolForm.value)" class="btn btn-primary" type="submit" [disabled]="!addSchoolForm.valid">
+                        {{buttonName}}
+                    </button>
+                </div>
+            </div>
+
+        
+        </div>
+    </form>
+</div>
+</div>

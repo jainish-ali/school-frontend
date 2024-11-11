@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Columns, Config, DefaultConfig } from 'ngx-easy-table';
 
-import {searchByCompany, status, limit} from '../../../../shared/constant/company'
+import {searchBy, status, limit} from '../../../../shared/constant/company'
 import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { InquiryService } from '../../services/inquiry.service';
 import { MasterService } from 'src/app/features/admin/manage-user/services/master.service';
@@ -13,7 +13,7 @@ import { ConfirmationDialogComponent } from 'src/app/features/shared/components/
   styleUrls: ['./inquiry-list.component.scss']
 })
 export class InquiryListComponent {
-  searchByCompany = searchByCompany;
+  searchByCompany = searchBy;
   status = status;
   limit = limit;
   public columns!: Columns[];
