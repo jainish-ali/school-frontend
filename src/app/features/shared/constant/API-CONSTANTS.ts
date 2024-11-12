@@ -1,5 +1,5 @@
 export const API_CONSTANTS: any = {
-  login:"authorization/user/login",
+  login:"master/userlogin",
   createStatus :"master/status",
   getstatus:"/master/statusList",
   createUsertype:'master/usertype',
