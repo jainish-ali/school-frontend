@@ -95,7 +95,7 @@ export class SiteSidenavComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    
+    this.menuConfig = admin
     this.storageService.getItem("userDetail").subscribe((res: any) => {
       console.log(res,'userdetail');
       this.username = res[0].username
@@ -111,15 +111,7 @@ export class SiteSidenavComponent implements OnInit {
   this.notification = res[0].notification
   console.log(userType,'noti');
   
-  if(userType == "Admin"){
-    this.menuConfig = admin
-  }
-  if(userType == "Spare"){
-    this.menuConfig = spare
-  }
-else{
-  this.menuConfig = otheruser
-}
+  
      });
     // this.storageService.getItem("userInfo").subscribe((userData: any) => {
     //   this.accountName = userData?.name;

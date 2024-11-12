@@ -45,12 +45,12 @@ export class SchoolListComponent {
     this.configuration.paginationRangeEnabled = false;
     this.configuration.paginationEnabled = false;
     this.columns = [
-      { key: 'School Name', title: 'School Name' },
-      { key: 'Contact No', title: 'Contact No' },
-      { key: 'Email ID', title: 'Email ID' },
-      { key: 'Address', title: 'Address' },
-      { key: 'Status', title: 'Status' },
-      { key: 'delete', title: 'Action' },
+      { key: 'School Name', title: 'School Name', width:'30%' },
+      { key: 'Contact No', title: 'Contact No',width:'10%' },
+      { key: 'Email ID', title: 'Email ID',width:'10%' },
+      { key: 'Address', title: 'Address',width:'35%' },
+      { key: 'Status', title: 'Status',width:'5%' },
+      { key: 'delete', title: 'Action',width:'5%' },
     ];
 
     this.getSchoolList({})
