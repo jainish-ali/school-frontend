@@ -12,6 +12,7 @@ import { SharedModule } from '../shared/shared.module';
 import { SharedService } from './shared.service';
 import { NotificationService } from './notification.service';
 import { MasterService } from '../admin/manage-user/services/master.service';
+import { JwtService } from './jwt.service';
 
 const TOKEN_KEY = 'auth-token';
 const USER_KEY = 'auth-user';
@@ -36,7 +37,8 @@ export class TokenService {
     private activityService: ActivityService,
     private storageService: StorageService,
     private NotificationService: NotificationService,
-    private masterService: MasterService
+    private masterService: MasterService,
+    private jwtService : JwtService
   ) {
     this.tokenSubject = new BehaviorSubject<string | any>(
       localStorage.getItem('token')
@@ -96,39 +98,50 @@ export class TokenService {
     return this.tokenSubject.asObservable();
   }
   generateToken(data: any) {
-    console.log('payload check =====>', data);
     let payload = {
-      email: data.email,
-      password: data.password,
+      "loginId" : data.userName,
+      "password" : data.password
     };
-    console.log('payload check =====>', payload);
     this.userService.userLogin(payload).subscribe((res: any) => {
       const userDetail = res.body;
       console.log(userDetail.success);
-
-      if (userDetail?.success) {
-        this.masterService.userbyid(data.email).subscribe((res: any) => {
-          console.log('user by id ', res.body.result);
-
-          this.storageService.setItem("userDetail", res.body.result)
-          const usertype = res.body.result
-          console.log(usertype,"usertype");
-          
-        if(usertype[0].user_type.name=="Admin"){
+      if(userDetail.success) {
+        const decodedToken = this.jwtService.decodeToken(res?.body?.result.access_token);
+        this.NotificationService.showSuccess('Login Successfully');
+        this.storageService.setItem("userDetail", decodedToken)
+        if(decodedToken?.roleId == 1) {
+          this.router.navigate(["superadmin/school-list"])
+        } else if(decodedToken?.roleId == 2) {
           this.router.navigate(["admin/createuser"])
-        }
-        if(usertype[0].user_type.name=="Spare"){
-          this.router.navigate(["spare/add-spare"])
-        }
-        else{
+        } else if(decodedToken?.roleId == 3) {
           this.router.navigate(["inquiry/inquiryform"])
         }
-        });
-        this.NotificationService.showSuccess('Login Successfully');
-        return userDetail.jwtToken;
+        return userDetail  
       } else {
         this.NotificationService.showError('Please check User Id and Password');
       }
+
+      // if (userDetail?.success) {
+      //   this.masterService.userbyid(data.email).subscribe((res: any) => {
+      //     this.storageService.setItem("userDetail", res.body.result)
+      //     const usertype = res.body.result
+      //     console.log(usertype,"usertype");
+          
+      //   // if(usertype[0].user_type.name=="Admin"){
+      //   //   this.router.navigate(["admin/createuser"])
+      //   // }
+      //   // if(usertype[0].user_type.name=="Spare"){
+      //   //   this.router.navigate(["spare/add-spare"])
+      //   // }
+      //   // else{
+      //   //   this.router.navigate(["inquiry/inquiryform"])
+      //   // }
+      //   });
+      //   this.NotificationService.showSuccess('Login Successfully');
+      //   return userDetail.jwtToken;
+      // } else {
+      //   this.NotificationService.showError('Please check User Id and Password');
+      // }
     });
   }
 
