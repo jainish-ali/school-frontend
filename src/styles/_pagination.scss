@@ -6,7 +6,7 @@
     --mx-pagination-border-radius: 0;
     --mx-pagination-focus-box-shadow: none;
     --mx-pagination-active-bg: $color-white;
-    --mx-pagination-active-border-color: $color-light-gray;
+    --mx-pagination-active-border-color: $color-blue;
     &>.page-item{
                 width: 30px;
                 display: flex;
@@ -23,7 +23,7 @@
         }
         &.active{
             .page-link{
-                color: $color-red !important;
+                color: $color-bluemain !important;
             }
         }
         &.pagination-prev{

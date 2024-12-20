@@ -1,0 +1,86 @@
+<app-loader *ngIf="spinnerLoading"></app-loader>
+<div class="container">
+    <div class="header mb-3">
+        <div class="back-to" routerLink="/superadmin/school-list">
+            <span class="mohawak-icon angle-left-icon back-i" ></span>Back To School List
+        </div>
+        <h2 class="text-center mb-2">Login Master</h2>
+        <div class="">
+            <sky-breadcrumb [breadcrumbItems]="breadcrumbItems"></sky-breadcrumb>
+        </div>
+    </div>
+  <div class="_card-container">
+    <div class="row mb-2">
+      <div class="col-md-12">
+        <app-alert [alertData]="alertData" [alertType]="alertType" *ngIf="alertTrigger"></app-alert>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <ng-select placeholder="#Select By" (change)="onSearchBY($event)">
+          <ng-option *ngFor="let item of searchBy" [value]="item?.id">{{ item?.title }}</ng-option>
+        </ng-select>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <sky-search-control [isGlobalSearchEnabled]="false" (input)="onSearchSchools($event)" placeholder="Search"></sky-search-control>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <ng-select placeholder="#Search By Status" (change)="onStatusChange($event)">
+          <ng-option *ngFor="let item of status" [value]="item?.id">{{ item?.title }}</ng-option>
+        </ng-select>
+      </div>
+      <div class="col-md-3 col-sm-2">
+        <button class="btn btn-primary w-100" routerLink="/superadmin/login-master">
+          Create Login
+        </button>
+      </div>
+    </div>
+    <div class="mt-4">
+      <ngx-table [configuration]="configuration" [data]="
+          allloginData.data
+            | paginate
+              : {
+                  id: 'pg1',
+                  itemsPerPage: tableItemsSize,
+                  currentPage: pageIndex,
+                  totalItems: totlRecords
+                }
+        "[columns]="columns">
+        <ng-template let-row let-index="index">
+          <td><a [routerLink]="['/school/details/', row?.LoginID]" (click)="navigateToAddSchool(row?.LoginID)">{{ row?.LoginID }}</a></td>
+          <td>{{ row?.Password }}</td>
+          <td>{{ row?.LoginName }}</td>
+          <td>{{ row?.MobileNumber }}</td>
+          <td>{{ row?.EmailID }}</td>
+          <td>{{ row?.RoleMaster?.RoleName }}</td>
+          <td>{{
+          
+          row?.BranchID == null ? 'Not Added' : row?.BranchID
+          }}</td>
+              
+          <td><i 
+            [ngClass]="getClass(row.StatusID)">
+</i>          <!-- {{row?.StatusID == 1 ? 'Active' : 'Inactive'}}</td> -->
+          <td>{{ row?.CreatedOn || "N/A" }}</td>
+          <td>{{ row?.CreatedBy || "N/A" }}</td>
+          <td>{{ row?.ModifiedOn  || "N/A"}}</td>
+          <td>{{ row?.ModifiedBy || "N/A"}}</td>
+     
+          <td>
+
+                <img class="sec_img" (click)="deletelogin(row?.LoginID, row?.LoginName,row?.RoleMaster?.RoleName)" src="../../../../../assets/icons/delete.png" width="40px">
+          </td>
+        </ng-template>
+      </ngx-table>
+    </div>
+  </div>
+  <div class="row mb-2 mt-2">
+    <div class="d-flex justify-content-center">
+      <pagination-controls  id="pg1" [maxSize]="10" [responsive]="true" [nextLabel]="''"
+        [previousLabel]="''" (pageChange)="onTablePageChange($event)">
+      </pagination-controls>
+    </div>
+  </div>
+
+
+</div>

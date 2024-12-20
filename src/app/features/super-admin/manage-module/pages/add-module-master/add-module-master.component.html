@@ -1,0 +1,69 @@
+<app-loader *ngIf="spinnerLoading"></app-loader>
+<div class="container">
+  <div class="header mb-3">
+    <div class="back-to" routerLink="/superadmin/module-master">
+      <span class="mohawak-icon angle-left-icon back-i"></span> Back To Module List
+    </div>
+    <div class="">
+      <sky-breadcrumb [breadcrumbItems]="breadcrumbItems"></sky-breadcrumb>
+    </div>
+  </div>
+  <h2 class="text-center mb-2">{{ buttonName }}</h2>
+  <div class="row mb-4">
+    <form [formGroup]="addModuleForm">
+      <div class="_card-container">
+        <div class="row mb-4 brd">
+          <div class="head-sec">{{ buttonName }} Details</div>
+
+          <div class="col-md-4 mb-3">
+            <h4>Module Name*</h4>
+            <input type="text" formControlName="ModuleName" placeholder="Type Here" class="form-control" />
+            <div *ngIf="addModuleForm.controls['ModuleName'].touched && addModuleForm.controls['ModuleName'].invalid" class="form-text text-danger">
+              <div *ngIf="addModuleForm.controls['ModuleName'].errors?.['required']">Module Name is required.</div>
+            </div>
+          </div>
+
+          <div class="col-md-4 mb-3">
+            <h4>Sort Order*</h4>
+            <input type="text" formControlName="Sort" placeholder="Type Here" class="form-control" />
+            <div *ngIf="addModuleForm.controls['Sort'].touched && addModuleForm.controls['Sort'].invalid" class="form-text text-danger">
+              <div *ngIf="addModuleForm.controls['Sort'].errors?.['required']">Sort Order is required.</div>
+            </div>
+          </div>
+
+          <div class="col-md-4 col-sm-2" *ngIf="isStatusVisible">
+            <h4>Status</h4>
+            <ng-select 
+            
+              placeholder="Status" 
+              formControlName="Status">
+              <ng-option *ngFor="let item of status" [value]="item?.id">
+                {{ item?.title }}
+              </ng-option>
+            </ng-select>
+            <div *ngIf="addModuleForm.get('Status')?.invalid && addModuleForm.get('Status')?.touched" class="text-danger">
+              Status is required.
+            </div>
+          </div>
+          
+        </div>
+
+        <div class="row align-center">
+          <div class="col-md-3 btn-grid">
+            <button class="btn btn-outline-secondary" type="button" routerLink="/superadmin/module-master">Cancel</button>
+          </div>
+          <div class="col-md-3 btn-grid">
+            <button
+              (click)="submit(addModuleForm.value)"
+              class="btn btn-primary"
+              type="submit"
+              [disabled]="!addModuleForm.valid"
+            >
+              {{ buttonName }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

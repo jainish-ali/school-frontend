@@ -3,7 +3,7 @@
     <li class="nav-item toggle-menu-container">
       <div class="nav-link-container">
         <div class="icon-nav-link">
-          <span class="menu-icon" *ngIf="logo != ''">
+          <span class="menu-icon" >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="32"
@@ -34,13 +34,13 @@
                   text-anchor="middle"
                   dy="0.35em"
                 >
-                  <tspan x="0" y="0" dx="-1" dy="-0.5">{{ logo }}</tspan>
+                  <tspan x="0" y="0" dx="-1" dy="-0.5">{{ userType?.charAt(0) }}</tspan>
                 </text>
               </g>
             </svg>
           </span>
           <a href="javascript:void(0)" class="nav-link">
-            <strong>{{ accountName }}</strong>
+            <strong>{{ userType }}</strong>
           </a>
         </div>
         <span class="toggle-icon" (click)="toggleMenu()">
@@ -53,8 +53,6 @@
     </li>
     <li class="nav-item account-info">
       <p>{{ username }}</p>
-      <p>{{ email }}</p>
-      <p>{{ userType }}</p>
       <button
         *ngIf="logo != ''"
         class="change-account-btn"

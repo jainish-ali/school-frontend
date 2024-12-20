@@ -49,7 +49,7 @@ export class SchoolListComponent {
       { key: 'Contact No', title: 'Contact No',width:'10%' },
       { key: 'Email ID', title: 'Email ID',width:'10%' },
       { key: 'Address', title: 'Address',width:'35%' },
-      { key: 'Status', title: 'Status',width:'5%' },
+      { key: 'Status', title: 'Status',width:'10%' },
       { key: 'delete', title: 'Action',width:'5%' },
     ];
 
@@ -173,5 +173,15 @@ export class SchoolListComponent {
   }
   navigateToAddSchool(schoolID: string | number) {
     this.router.navigate([`superadmin/add-school`, schoolID]);
+  }
+  getClass(status: string): string {
+    switch (status) {
+      case 'Active':
+        return 'bi bi-check-circle-fill text-success';
+      case 'Inactive':
+        return 'bi bi-x-circle-fill text-danger';
+      default:
+        return 'bi bi-x-circle-fill text-danger';
+    }
   }
 }

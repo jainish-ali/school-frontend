@@ -22,7 +22,7 @@ import { SidenavService } from "../../services/sidenav.service";
 
 import { BsModalRef, BsModalService, ModalOptions } from "ngx-bootstrap/modal";
 import { ConfirmationDialogComponent } from "../../../components/confirmation-dialog/confirmation-dialog.component";
-import { admin, otheruser,spare } from "../../../constant/menu/residential.config";
+import { SuperAdmin, Admin } from "../../../constant/menu/residential.config";
 
 @Component({
   selector: "xchange-sidenav",
@@ -95,34 +95,22 @@ export class SiteSidenavComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.menuConfig = admin
+    
     this.storageService.getItem("userDetail").subscribe((res: any) => {
-      console.log(res,'userdetail');
-      this.username = res[0].username
-      this.email = res[0].email
-    this.userType = res[0].user_type.name
-    console.log(this.userType);
+      this.username = res.loginName
+      this.email = res.email
+    this.userType = res.roleName
+    if(this.userType === 'SuperAdmin'){
+      this.menuConfig = SuperAdmin
+    } else if(this.userType === 'Admin'){
+      this.menuConfig = Admin
+    }
      });
-    this.project = this.ar.snapshot.data["project"];
-   
-    this.project = this.ar.snapshot.data["project"];
-    this.storageService.getItem("userDetail").subscribe((res: any) => {
-  const userType = res[0].user_type.name
-  this.notification = res[0].notification
-  console.log(userType,'noti');
-  
-  
+     this.storageService.getItem("userDetail").subscribe((res: any) => {
+      this.username = res.loginName
+      this.email = res.email
+      this.userType = res.roleName
      });
-    // this.storageService.getItem("userInfo").subscribe((userData: any) => {
-    //   this.accountName = userData?.name;
-    //   this.menuConfigService
-    //     .getMenuData(this.project, userData)
-    //     .subscribe((menu) => {
-    //       this.menuConfig = menu;
-    //     });
-    // });
-    this.accountId = localStorage.getItem("accountNumber");
-    this.accountAddress = localStorage.getItem("customerAddress");
     // this.accountId = this.storageService.userInfo?.orgUnit?.uid?.split("_")[0];
     // this.accountAddress = localStorage.getItem("customerAddress");
     // this.companyCode = this.storageService.userInfo?.orgUnit?.name;

@@ -40,7 +40,7 @@
   
             <div class="customer-messages-carousel mb-1">
               <owl-carousel-o [options]="sliderOptionsForCustomerMsg" #owlCarousel>
-                <ng-template carouselSlide *ngFor="let alert of salePersonNotifications">
+                <ng-template carouselSlide *ngFor="let alert of customerMessageAlerts">
                   <alert type="" class="dashboard-page-alert" [dismissible]="true" (onClosed)="onDismissAlert(alert)">
                     <div class="alert-content">
                       <div class="alert-img"><img [src]="alert.src"

@@ -9,6 +9,7 @@ import { SidenavService } from '../../services/sidenav.service';
 import { menuType } from "../../../constant/menu/menu.type";
 import { StorageService } from 'src/app/features/http-services/storage.service';
 import { SessionService } from 'src/app/features/http-services/session.service';
+import { SharedService } from 'src/app/features/http-services/shared.service';
 
 @Component({
   selector: 'site-header',
@@ -33,6 +34,7 @@ export class SiteHeaderComponent implements OnInit {
   username: any;
   email: any;
   userType: any;
+  school: any;
   constructor(private router: Router, private location: Location,
     private sideNav: SidenavService,
     private menuConfig: MenuConfigService,
@@ -40,7 +42,8 @@ export class SiteHeaderComponent implements OnInit {
     private renderer: Renderer2,
     private cd: ChangeDetectorRef,
     public storageService : StorageService,
-    private sessionService : SessionService) { }
+    private sessionService : SessionService,
+  private sharedService : SharedService) { }
     toggleMobileTopNav() {
       this.mobileTopNavbarCollapses.isTransitioning = true;
       this.mobileTopNavbarCollapses.isCollapsed =
@@ -58,14 +61,22 @@ export class SiteHeaderComponent implements OnInit {
       }
     }
   ngOnInit(): void {
-  
     this.storageService.getItem("userDetail").subscribe((res: any) => {
-     console.log(res,'userdetail');
-     this.username = res[0].username
-     this.email = res[0].email
-   this.userType = res[0].user_type.name
-   console.log(this.userType);
+    // console.log(res,'userdetail');
+     this.username = res.loginName
+     this.email = res.email
+     this.userType = res.roleName
+  
+     
     });
+    if(this.userType !== 'SuperAdmin' ){
+
+      this.sharedService.getselectedSchool().subscribe(school => {
+       this.school = school
+       console.log(this.school);
+       
+      });
+    }
     let urlPath = this.location.path();
     this.activeUrlPath = urlPath.split('/');
     this.topHeader.filter((val: any) => {
@@ -73,16 +84,6 @@ export class SiteHeaderComponent implements OnInit {
         this.headerMenuData = val;
       }
     });
-    if (
-      window.location.href.includes('afsc') ||
-      window.location.href.includes('dms') ||
-      window.location.href.includes('fms') ||
-      window.location.href.includes('pis')
-    ) {
-      this.menuCheck = 'true';
-    } else {
-      this.menuCheck = 'false';
-    }
   }
 
   /**
@@ -152,5 +153,17 @@ export class SiteHeaderComponent implements OnInit {
   logout(){
     this.sessionService.logout();
     
+  }
+  getUserIcon(): string {
+    switch (this.userType) {
+      case 'SuperAdmin':
+        return 'bi bi-shield-lock-fill';
+      case 'Admin':
+        return 'bi bi-gear-fill';
+      case 'User':
+        return 'bi bi-person-fill';
+      default:
+        return 'bi bi-question-circle'; // Default icon for unknown user types
+    }
   }
 }

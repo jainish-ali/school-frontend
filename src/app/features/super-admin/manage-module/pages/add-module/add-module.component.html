@@ -1,0 +1,105 @@
+<app-loader *ngIf="spinnerLoading"></app-loader>
+<div class="container">
+  <div class="header mb-3">
+    <div class="back-to" routerLink="/superadmin/module-page-list">
+      <span class="mohawak-icon angle-left-icon back-i"></span> Back To Module Page List
+    </div>
+    <div class="">
+      <sky-breadcrumb [breadcrumbItems]="breadcrumbItems"></sky-breadcrumb>
+    </div>
+  </div>
+  <h2 class="text-center mb-2">{{ buttonName }}</h2>
+  <div class="row mb-4">
+    <form [formGroup]="addModulePageForm">
+      <div class="_card-container">
+        <div class="row mb-4 brd">
+          <div class="head-sec">{{ buttonName }} Details</div>
+          <div class="col-md-4 mb-3">
+            <h4>Select Module Name*</h4>
+            <ng-select [items]="ModuleNameData" bindLabel="ModuleName" bindValue="ModuleID" formControlName="ModuleName" placeholder="Select School"></ng-select>
+            <div *ngIf="addModulePageForm.controls['ModuleName'].invalid && addModulePageForm.controls['ModuleName'].touched" class="text-danger">
+                Module Name is required.
+            </div>
+          </div>
+          
+          <div class="col-md-4 mb-3">
+            <h4>Page Name*</h4>
+            <input
+              type="text"
+              formControlName="pageName"
+              placeholder="Type Here"
+              class="form-control"
+            />
+            <div
+              *ngIf="addModulePageForm.controls['pageName'].touched && addModulePageForm.controls['pageName'].invalid"
+              class="form-text text-danger"
+            >
+              <div *ngIf="addModulePageForm.controls['pageName'].errors?.['required']">
+                Page Name is required.
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 mb-3">
+            <h4>Page URL*</h4>
+            <input
+              type="text"
+              formControlName="page"
+              placeholder="Type Here"
+              class="form-control"
+            />
+            <div
+              *ngIf="addModulePageForm.controls['page'].touched && addModulePageForm.controls['page'].invalid"
+              class="form-text text-danger"
+            >
+              <div *ngIf="addModulePageForm.controls['page'].errors?.['required']">
+                Page URL is required.
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 col-sm-2 mb-3" *ngIf="isStatusVisible">
+            <h4>Status</h4>
+            <ng-select
+              placeholder="Status"
+              formControlName="status"
+              (change)="onStatusChange($event)"
+            >
+              <ng-option *ngFor="let item of status" [value]="item?.id">
+                {{ item?.title }}
+              </ng-option>
+            </ng-select>
+            <div
+              *ngIf="addModulePageForm.get('status')?.invalid && addModulePageForm.get('status')?.touched"
+              class="text-danger"
+            >
+              Status is required.
+            </div>
+          </div>
+        </div>
+
+        <div class="row align-center">
+          <div class="col-md-3 btn-grid">
+            <button
+              class="btn btn-outline-secondary"
+              type="button"
+              routerLink="/superadmin/module-page-list"
+            >
+              Cancel
+            </button>
+          </div>
+          <div class="col-md-3 btn-grid">
+            <button
+              (click)="submit(addModulePageForm.value)"
+              class="btn btn-primary"
+              type="submit"
+              [disabled]="!addModulePageForm.valid"
+            >
+              {{ buttonName }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

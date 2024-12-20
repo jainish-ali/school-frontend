@@ -1,0 +1,18 @@
+<div class="branch-container">
+    <button class="close-btn" (click)="closeModal()">✖</button>
+
+    <!-- Loop through the branches -->
+    <div
+      *ngFor="let branch of branchData;let i =index"
+      class="branch-card"
+      [class.selected]="branch.BranchID === selectedBranchID"
+      (click)="selectBranch(branch.BranchID,i)"
+    >
+      <div class="card-content">
+        <h3 class="branch-name">{{ branch.BranchName }}</h3>
+        <p class="branch-address">{{ branch.Address }}</p>
+        <p class="branch-contact">Contact: {{ branch.ContactNo }}</p>
+      </div>
+    </div>
+  </div>
+  

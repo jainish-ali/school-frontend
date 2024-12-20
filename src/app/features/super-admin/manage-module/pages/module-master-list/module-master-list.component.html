@@ -1,0 +1,80 @@
+<app-loader *ngIf="spinnerLoading"></app-loader>
+<div class="container">
+  <div class="header mb-3">
+    <div class="back-to" routerLink="/superadmin/module-master">
+      <span class="mohawak-icon angle-left-icon back-i"></span> Back To Module Master
+    </div>
+    <h2 class="text-center mb-2">Module Master List</h2>
+    <div>
+      <sky-breadcrumb [breadcrumbItems]="breadcrumbItems"></sky-breadcrumb>
+    </div>
+  </div>
+  <div class="_card-container">
+    <div class="row mb-2">
+      <div class="col-md-12">
+        <app-alert [alertData]="alertData" [alertType]="alertType" *ngIf="alertTrigger"></app-alert>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <sky-search-control [isGlobalSearchEnabled]="false" (input)="onSearchModules($event)" placeholder="Search">
+        </sky-search-control>
+      </div>
+      <div class="col-md-3 col-sm-2">
+        <button class="btn btn-primary w-100" routerLink="/superadmin/add-module-master">
+          Create Module
+        </button>
+      </div>
+    </div>
+    <div class="mt-4">
+      <ngx-table
+        [configuration]="configuration"
+        [data]="
+          allModuleData.data
+            | paginate
+              : {
+                  id: 'pg1',
+                  itemsPerPage: tableItemsSize,
+                  currentPage: pageIndex,
+                  totalItems: totlRecords
+                }
+        "
+        [columns]="columns"
+      >
+        <ng-template let-row>
+          <td>
+            <a [routerLink]="['/module/details/', row?.ModuleID]"(click)="navigateToAdd(row?.ModuleID)">{{ row?.ModuleID }}</a>
+          </td>
+          <td>{{ row?.ModuleName }}</td>
+          <td>{{ row?.Sort || 'N/A' }}</td>
+          <td><i [ngClass]="getClass(row?.Status)"></i></td>
+          <td>{{ row?.CreatedOn || 'N/A' }}</td>
+          <td>{{ row?.CreatedBy || 'N/A' }}</td>
+          <td>{{ row?.ModifiedOn || 'N/A' }}</td>
+          <td>{{ row?.ModifiedBy || 'N/A' }}</td>
+          <td>
+            <img
+              class="sec_img"
+              (click)="deleteModule(row?.ModuleID, row?.ModuleName)"
+              src="../../../../../assets/icons/delete.png"
+              width="40px"
+            />
+          </td>
+        </ng-template>
+      </ngx-table>
+    </div>
+  </div>
+  <div class="row mb-2 mt-2">
+    <div class="d-flex justify-content-center">
+      <pagination-controls
+        id="pg1"
+        [maxSize]="10"
+        [responsive]="true"
+        [nextLabel]="''"
+        [previousLabel]="''"
+        (pageChange)="onTablePageChange($event)"
+      >
+      </pagination-controls>
+    </div>
+  </div>
+</div>

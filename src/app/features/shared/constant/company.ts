@@ -13,6 +13,21 @@ export const searchBy = [
     },
    
 ];
+export const LoginsearchBy = [
+    {
+        title: 'Name',
+        id: "LoginName",
+    },
+    {
+        title: 'Mobile Number',
+        id: "MobileNumber",
+    },
+    {
+        title: 'Email',
+        id: "EmailID",
+    },
+   
+];
 export const status = [
     {
         title: 'Active',
@@ -21,6 +36,17 @@ export const status = [
     {
         title: 'Inactive',
         id: "Inactive",
+    },
+   
+];
+export const loginstatus = [
+    {
+        title: 'Active',
+        id: "1",
+    },
+    {
+        title: 'Inactive',
+        id: "2",
     },
    
 ];

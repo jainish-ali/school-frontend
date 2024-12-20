@@ -1,0 +1,75 @@
+<app-loader *ngIf="spinnerLoading"></app-loader>
+<div class="container">
+  <div class="header mb-3">
+    <div class="back-to" routerLink="/superadmin/school-list">
+      <span class="mohawak-icon angle-left-icon back-i"></span>Back To Login
+    </div>
+    <sky-breadcrumb [breadcrumbItems]="breadcrumbItems"></sky-breadcrumb>
+  </div>
+  <h2 class="text-center mb-2">{{ buttonName }} for {{SchoolName}}</h2>
+
+  <form [formGroup]="addBranchForm" (ngSubmit)="onSubmit()">
+    <div class="_card-container">
+      <div class="row mb-4 brd">
+        <div class="head-sec">{{ buttonName }} Details</div>
+
+        <div class="col-md-4 mb-3">
+          <h4>School ID*</h4>
+          <input type="text" formControlName="SchoolID" placeholder="Enter School ID" class="form-control" />
+          <div *ngIf="addBranchForm.controls['SchoolID'].touched && addBranchForm.controls['SchoolID'].invalid" class="form-text text-danger">
+            School ID is required.
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <h4>Branch Name*</h4>
+          <input type="text" formControlName="BranchName" placeholder="Enter Branch Name" class="form-control" />
+          <div *ngIf="addBranchForm.controls['BranchName'].touched && addBranchForm.controls['BranchName'].invalid" class="form-text text-danger">
+            Branch Name is required.
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <h4>Address*</h4>
+          <input type="text" formControlName="Address" placeholder="Enter Address" class="form-control" />
+          <div *ngIf="addBranchForm.controls['Address'].touched && addBranchForm.controls['Address'].invalid" class="form-text text-danger">
+            Address is required.
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <h4>Contact Number*</h4>
+          <input type="text" formControlName="ContactNo" placeholder="Enter Contact Number" class="form-control" />
+          <div *ngIf="addBranchForm.controls['ContactNo'].touched && addBranchForm.controls['ContactNo'].invalid" class="form-text text-danger">
+            <div *ngIf="addBranchForm.controls['ContactNo'].errors?.['required']">Contact Number is required.</div>
+            <div *ngIf="addBranchForm.controls['ContactNo'].errors?.['pattern']">Invalid Contact Number.</div>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <h4>Email ID*</h4>
+          <input type="email" formControlName="EmailID" placeholder="Enter Email ID" class="form-control" />
+          <div *ngIf="addBranchForm.controls['EmailID'].touched && addBranchForm.controls['EmailID'].invalid" class="form-text text-danger">
+            Invalid Email ID.
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <h4>Fax Number</h4>
+          <input type="text" formControlName="FaxNo" placeholder="Enter Fax Number" class="form-control" />
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <h4>Website</h4>
+          <input type="text" formControlName="Website" placeholder="Enter Website URL" class="form-control" />
+        </div>
+      </div>
+    </div>
+
+    <div class="footer mt-3 mb-3">
+      <button type="submit" class="btn btn-primary offset-md-3 col-md-6" [disabled]="spinnerLoading || !addBranchForm.valid">
+        {{ buttonName }}
+      </button>
+    </div>
+  </form>
+</div>

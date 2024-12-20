@@ -110,7 +110,7 @@
 // Site Header Section
 .header-section {
   width: 100%;
-  background: $color-red;
+  background: $color-bluemain;
   padding: 5px 0;
   position: sticky;
   top: 0;
@@ -225,8 +225,8 @@
 
 .top-bar-menu-left {
   display: flex;
-  background: $color-dark-gray;
-  border-radius: 40px;
+  align-items: center;
+  // background: $color-dark-gray;
 
   // &>li {
   //     background: $color-dark-gray;
@@ -253,7 +253,8 @@
   // }
 
   & > li {
-    background: $color-dark-gray;
+    font-weight: 900;
+  //  background: $color-dark-gray;
     border-radius: 40px;
     & > a {
       padding: 8px 12px;

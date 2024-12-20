@@ -30,7 +30,7 @@
     &.top {
         .tooltip-arrow {
             &::before {
-                border-top-color: $color-red;
+                border-top-color: $color-blue;
             }
         }
     }
@@ -38,7 +38,7 @@
     &.start {
         .tooltip-arrow {
             &::before {
-                border-left-color: $color-red;
+                border-left-color: $color-blue;
             }
         }
     }
@@ -46,7 +46,7 @@
     &.bottom {
         .tooltip-arrow {
             &::before {
-                border-bottom-color: $color-red;
+                border-bottom-color: $color-blue;
             }
         }
     }
@@ -55,12 +55,12 @@
     &.end {
         .tooltip-arrow {
             &::before {
-                border-right-color: $color-red;
+                border-right-color: $color-blue;
             }
         }
     }
 
     .tooltip-inner {
-        background: $color-red;
+        background: $color-blue;
     }
 }

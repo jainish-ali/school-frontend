@@ -5,8 +5,15 @@ const routes: Routes = [
   {
     path: "",
     loadChildren: () =>
-      import("./manage-user/manage-user.module").then(
-        (m) => m.ManageUserModule
+      import("./manage-roles/manage-roles.module").then(
+        (m) => m.ManageRolesModule
+      ),
+  },
+  {
+    path: "",
+    loadChildren: () =>
+      import("./manage-login/manage-login.module").then(
+        (m) => m.ManageLoginModule
       ),
   },
   

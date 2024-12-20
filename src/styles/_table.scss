@@ -12,12 +12,12 @@
     thead {
         tr {
             th {
-                background: $color-dark-gray;
+                background: $color-blue;
                 color: $color-white;
                 font-size: 18px;
                 font-weight: 500;
                 padding: 10px 20px;
-                border-left: 0.20px solid $color-gray-b1;
+                border-left: 0.20px solid $color-blue;
 
                 &.mw460p {
                     min-width: 460px;
@@ -44,7 +44,7 @@
             td {
                 padding: 10px 20px;
                 border: none;
-                border-left: 0.20px solid $color-gray-b1;
+                border-left: 0.20px solid $color-blue;
                 font-size: 16px;
 
                 &:first-child {
@@ -54,7 +54,7 @@
 
             &:nth-child(even) {
                 td {
-                    background: $color-light-gray;
+                    background: $color-blue;
                 }
             }
         }

@@ -114,7 +114,7 @@ export class AddSchoolComponent {
     }
   }
   showAlert(message: string) {
-    this.NotificationService.successAlert(message).subscribe((result) => {
+    this.NotificationService.successAlert(message,"Yes, go to School List").subscribe((result) => {
       if (result.confirmed) {
         this.router.navigate(['/superadmin/school-list']);
       } else if (result.dismissed) {

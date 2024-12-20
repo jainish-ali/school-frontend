@@ -13,7 +13,7 @@ import { menuType } from '../../../constant/menu/menu.type';
 })
 export class MainLayoutComponent 
 implements OnInit, AfterContentChecked, AfterViewChecked{
-  _opened: boolean = true;
+  _opened: boolean = false;
   @ViewChild("appHeader") appHeader!: ElementRef;
   height: number = 0;
 

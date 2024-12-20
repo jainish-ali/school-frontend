@@ -126,12 +126,12 @@
 }
 
 .ng-sidebar__backdrop {
-  background-image: linear-gradient(
-    to right,
-    rgba(167, 35, 35, 0.4),
-    rgba(255, 255, 255, 0.4),
-    rgb(167, 35, 35, 0.4)
-  ) !important;
+  // background-image: linear-gradient(
+  //   to right,
+  //   rgba(167, 35, 35, 0.4),
+  //   rgba(255, 255, 255, 0.4),
+  //   rgb(167, 35, 35, 0.4)
+  // ) !important;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }

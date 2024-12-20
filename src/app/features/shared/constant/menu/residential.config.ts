@@ -1,189 +1,95 @@
-export const admin = [
+export const SuperAdmin = [
   {
-    name: "User",
+    name: "manage School",
     path: "",
     iconClass: "products-icon",
     subNav: [
       {
-        name: "Create User",
-        path: "admin/createuser",
+        name: "School List",
+        path: "superadmin/school-list",
         imgUrl:
           "https://mohawk.scene7.com/is/image/MohawkResidential/RMC992T62?wid=400&hei=400&fit=crop%2c1&fmt=png8-alpha&op_sharpen=1",
     
       },
       {
-        name: "user List",
-        path: "",
+        name: "Create School",
+        path: "superadmin/add-school",
         imgUrl:
           "https://mohawk.scene7.com/is/image/MohawkResidential/RMC992T62?wid=400&hei=400&fit=crop%2c1&fmt=png8-alpha&op_sharpen=1",
     
-      },
-      {
-        name: "Create Status Type",
-        path: "admin/status",
-        imgUrl:
-          "https://mohawk.scene7.com/is/image/MohawkResidential/RMC992T62?wid=400&hei=400&fit=crop%2c1&fmt=png8-alpha&op_sharpen=1",
-    
-      },
-      {
-        name: "Create User Type",
-        path: "admin/userType",
-        imgUrl:
-          "https://mohawk.scene7.com/is/image/MohawkResidential/RMC992T62?wid=400&hei=400&fit=crop%2c1&fmt=png8-alpha&op_sharpen=1",
-    
-      },
-      {
-        name: "Create Inquiry Type",
-        path: "admin/InquiryType",
-        imgUrl:
-          "https://mohawk.scene7.com/is/image/MohawkResidential/RMC992T62?wid=400&hei=400&fit=crop%2c1&fmt=png8-alpha&op_sharpen=1",
-    
-      },
+      }
     ],
   },
   {
-    name: "Bulk Sms",
+    name: "Manage Login",
     path: "",
     iconClass: "orders-icon",
     subNav: [
       {
-        name: "Send Bulk Sms",
-        path: "residential/orders",
-      },
-    
-    ],
-  },
-  {
-    name: "Spare",
-    path: "",
-    iconClass: "products-icon",
-    subNav: [
- 
-      {
-        name: "Add Spare",
-        path: "spare/add-spare",
-        imgUrl:
-          "https://mohawk.scene7.com/is/image/MohawkResidential/RMC992T62?wid=400&hei=400&fit=crop%2c1&fmt=png8-alpha&op_sharpen=1",
-    
+        name: "Login Master",
+        path: "superadmin/login-master",
       },
       {
-        name: "Spare List",
-        path: "spare/spare-list",
-        imgUrl:
-          "https://mohawk.scene7.com/is/image/MohawkResidential/RMC992T62?wid=400&hei=400&fit=crop%2c1&fmt=png8-alpha&op_sharpen=1",
-    
-      },
-      {
-        name: "Sale Spare",
-        path: "spare/sale-spare",
-        imgUrl:
-          "https://mohawk.scene7.com/is/image/MohawkResidential/RMC992T62?wid=400&hei=400&fit=crop%2c1&fmt=png8-alpha&op_sharpen=1",
-    
+        name: "Login List",
+        path: "superadmin/login-list",
       },
     ],
   },
   {
-    name: "Inquiry",
-    path: "",
-    iconClass: "products-icon",
-    subNav: [
- 
-      {
-        name: "Inquiry form",
-        path: "inquiry/inquiryform",
-        imgUrl:
-          "https://mohawk.scene7.com/is/image/MohawkResidential/RMC992T62?wid=400&hei=400&fit=crop%2c1&fmt=png8-alpha&op_sharpen=1",
-    
-      },
-      {
-        name: "Inquiry List",
-        path: "inquiry/inquirylist",
-        imgUrl:
-          "https://mohawk.scene7.com/is/image/MohawkResidential/RMC992T62?wid=400&hei=400&fit=crop%2c1&fmt=png8-alpha&op_sharpen=1",
-    
-      },
-    ],
-  },
-  {
-    name: "Bulk Sms",
+    name: "Manage Modules",
     path: "",
     iconClass: "orders-icon",
     subNav: [
       {
-        name: "Send Bulk Sms",
-        path: "residential/orders",
+        name: "Add Page Modules",
+        path: "superadmin/add-module",
       },
     
+      {
+        name: "Page Module List",
+        path: "superadmin/module-list",
+      },
+      {
+        name: "Add Module Master",
+        path: "superadmin/add-module-master",
+      },
+      {
+        name: "Module Master List",
+        path: "superadmin/module-master-list",
+      },
     ],
-  },
+  }
  
  
  
 ];
-export const otheruser = [
+export const Admin = [
   {
-    name: "Inquiry",
+    name: "manage Roles",
     path: "",
     iconClass: "products-icon",
     subNav: [
- 
       {
-        name: "Inquiry form",
-        path: "inquiry/inquiryform",
+        name: "Roles List",
+        path: "admin/manage-role",
         imgUrl:
           "https://mohawk.scene7.com/is/image/MohawkResidential/RMC992T62?wid=400&hei=400&fit=crop%2c1&fmt=png8-alpha&op_sharpen=1",
     
-      },
-      {
-        name: "Inquiry List",
-        path: "inquiry/inquirylist",
-        imgUrl:
-          "https://mohawk.scene7.com/is/image/MohawkResidential/RMC992T62?wid=400&hei=400&fit=crop%2c1&fmt=png8-alpha&op_sharpen=1",
-    
-      },
+      }
     ],
   },
   {
-    name: "Bulk Sms",
+    name: "Manage Login",
     path: "",
     iconClass: "orders-icon",
     subNav: [
       {
-        name: "Send Bulk Sms",
-        path: "residential/orders",
-      },
-    
-    ],
-  },
- 
-];
-export const spare = [
-  {
-    name: "Spare",
-    path: "",
-    iconClass: "products-icon",
-    subNav: [
- 
-      {
-        name: "Add Spare",
-        path: "spare/add-spare",
-        imgUrl:
-          "https://mohawk.scene7.com/is/image/MohawkResidential/RMC992T62?wid=400&hei=400&fit=crop%2c1&fmt=png8-alpha&op_sharpen=1",
-    
+        name: "Login Master",
+        path: "admin/login-master",
       },
       {
-        name: "Spare List",
-        path: "spare/spare-list",
-        imgUrl:
-          "https://mohawk.scene7.com/is/image/MohawkResidential/RMC992T62?wid=400&hei=400&fit=crop%2c1&fmt=png8-alpha&op_sharpen=1",
-    
-      },
-      {
-        name: "Sale Spare",
-        path: "spare/sale-spare",
-        imgUrl:
-          "https://mohawk.scene7.com/is/image/MohawkResidential/RMC992T62?wid=400&hei=400&fit=crop%2c1&fmt=png8-alpha&op_sharpen=1",
-    
+        name: "Login List",
+        path: "admin/login-list",
       },
     ],
   },

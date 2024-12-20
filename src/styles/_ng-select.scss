@@ -10,14 +10,14 @@
 
         .ng-clear {
             font-weight: 500;
-            color: $color-red;
+            color: $color-bluemain;
         }
     }
 
     .ng-select-container {
         min-height: 45px;
         background-color: $color-white;
-        border: 1px solid $color-gray;
+        border: 1px solid $color-blue;
         border-radius: 5px !important;
 
         .ng-value-container {

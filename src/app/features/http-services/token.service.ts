@@ -11,8 +11,9 @@ import { ActivityService } from '../shared/user/services/activity.service';
 import { SharedModule } from '../shared/shared.module';
 import { SharedService } from './shared.service';
 import { NotificationService } from './notification.service';
-import { MasterService } from '../admin/manage-user/services/master.service';
 import { JwtService } from './jwt.service';
+import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
+import { SelectBranchComponent } from '../shared/components/select-branch/select-branch.component';
 
 const TOKEN_KEY = 'auth-token';
 const USER_KEY = 'auth-user';
@@ -37,8 +38,8 @@ export class TokenService {
     private activityService: ActivityService,
     private storageService: StorageService,
     private NotificationService: NotificationService,
-    private masterService: MasterService,
-    private jwtService : JwtService
+    private jwtService : JwtService,
+    private modalService: BsModalService
   ) {
     this.tokenSubject = new BehaviorSubject<string | any>(
       localStorage.getItem('token')
@@ -104,21 +105,25 @@ export class TokenService {
     };
     this.userService.userLogin(payload).subscribe((res: any) => {
       const userDetail = res.body;
-      console.log(userDetail.success);
+    console.log(res.statusText=='Unauthorized');
+    if(res.statusText=='Unauthorized'){
+      
+      this.NotificationService.loginErrorAlert('Please check User Id and Password');
+      return
+    }
       if(userDetail.success) {
-        const decodedToken = this.jwtService.decodeToken(res?.body?.result.access_token);
-        this.NotificationService.showSuccess('Login Successfully');
-        this.storageService.setItem("userDetail", decodedToken)
-        if(decodedToken?.roleId == 1) {
-          this.router.navigate(["superadmin/school-list"])
-        } else if(decodedToken?.roleId == 2) {
-          this.router.navigate(["admin/createuser"])
-        } else if(decodedToken?.roleId == 3) {
-          this.router.navigate(["inquiry/inquiryform"])
-        }
+         const decodedToken = this.jwtService.decodeToken(res?.body?.result.access_token);
+         this.storageService.setItem("userDetail", decodedToken)
+         this.storageService.setItem("branches", res?.body?.result?.schoolDetails)
+         const branch = res?.body?.result?.schoolDetails
+          if(res?.body?.result?.schoolDetails !== null && branch.SchoolBranceDetails.length>1 ){
+            this.openBranchModal(branch.SchoolBranceDetails)
+          } else{
+            this.NotificationService.loginSuccessAlert('Authorized user',decodedToken,res?.body?.result?.schoolDetails);
+          }
         return userDetail  
       } else {
-        this.NotificationService.showError('Please check User Id and Password');
+        
       }
 
       // if (userDetail?.success) {
@@ -168,4 +173,19 @@ export class TokenService {
   //   let currentTime = new Date().getTime() / 1000;
   //   return Number(expirationTime) - currentTime < 0;
   // }
+  modalRef?: BsModalRef;
+  openBranchModal(data: any) {
+    console.log(data); 
+    const initialState: ModalOptions = {
+      initialState: data,
+    };
+    this.modalRef = this.modalService.show(
+      SelectBranchComponent,
+      Object.assign(initialState, {
+        id: 'confirmation',
+        class: 'modal-xl modal-dialog-centered',
+      })
+    );
+  }
+
 }

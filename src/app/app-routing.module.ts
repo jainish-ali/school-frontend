@@ -27,14 +27,6 @@ const routes: Routes = [
       ),
   },
   {
-    path: "inquiry",
-    component: MainLayoutComponent,
-    loadChildren: () =>
-      import("./features/inquiry/inquiry.module").then(
-        (m) => m.InquiryModule
-      ),
-  },
-  {
     path: "superadmin",
     component: MainLayoutComponent,
     loadChildren: () =>

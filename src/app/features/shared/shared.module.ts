@@ -47,6 +47,8 @@ import { TableViewComponent } from './components/form-control-components/table-v
 import { AlertComponent } from "./components/alert/alert.component";
 import { SiteSidenavComponent } from './layouts/components/site-sidenav/site-sidenav.component';
 import { ToastrModule } from "ngx-toastr";
+import { AddBranchComponent } from './components/add-branch/add-branch.component';
+import { SelectBranchComponent } from './components/select-branch/select-branch.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +76,8 @@ import { ToastrModule } from "ngx-toastr";
     TableViewComponent,
     AlertComponent,
     SiteSidenavComponent,
+    AddBranchComponent,
+    SelectBranchComponent,
     
   ],
   imports: [

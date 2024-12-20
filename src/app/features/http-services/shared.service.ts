@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { StorageService } from './storage.service';
-import { Observable, map } from 'rxjs';
+import { Observable, map, of, switchMap } from 'rxjs';
 import { UserService } from '../shared/user/services/user.service';
 import { DatePipe, formatDate } from '@angular/common';
 
@@ -32,6 +32,7 @@ export class SharedService {
     //   return this.userEmail;
     // }
   }
+
 
   // getDepartmentData(): any {
   //   let payload = {
@@ -106,5 +107,36 @@ export class SharedService {
     let originalDate = new Date(dateString);
     let formattedDate = pipe.transform(originalDate, 'dd/MM/yyyy HH:mm:ss');
     return formattedDate
+  }
+  getBranchID(): Observable<number | undefined> {
+    return this.storageService.getItem('selected').pipe(
+      map(selected => selected?.BranchID),
+      switchMap(branchID => {
+        if (branchID) {
+          return of(branchID); // If BranchID exists, return it as an observable
+        } else {
+          return this.storageService.getItem('branches').pipe(
+            map(branches => branches?.SchoolBranceDetails[0]?.BranchID)
+          );
+        }
+      })
+    );
+  }
+  getselectedSchool(): Observable<number | undefined> {
+    return this.storageService.getItem('selected').pipe(
+      map(selected => selected),
+      switchMap(school => {
+        if (school) {
+          return of(school); // If BranchID exists, return it as an observable
+        } else {
+          return this.storageService.getItem('branches').pipe(
+            map(branches => branches?.SchoolBranceDetails[0])
+          );
+        }
+      })
+    );
+  }
+  getBranches(){
+   return this.storageService.getItem('branches')
   }
 }

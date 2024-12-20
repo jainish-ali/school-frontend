@@ -31,6 +31,7 @@ export class ApiService {
   // const formatedURl = 'http://103.190.95.186/skyitmsapi/' + url
     // const formatedURl = 'http://103.190.95.186/skyitmsapiuat/' + url
      const formatedURl = 'http://localhost:8091/v1/' + url
+   // const formatedURl = 'http://103.211.202.216:8896/v1/' + url
     return formatedURl;
   }
   get(urlData: any, options: any = {}): Observable<any> {

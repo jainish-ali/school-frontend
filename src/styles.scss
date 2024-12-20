@@ -37,7 +37,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: none;
   line-height: 1.57;
-  background: $color-light-gray;
+  // background: $color-light-gray;
   // overflow: hidden;
   // ::-webkit-scrollbar {
   //   display: none;
@@ -55,12 +55,12 @@ body {
 
   
 modal-container {
-  background-image: linear-gradient(
-    to right,
-    rgba(167, 35, 35, 0.4),
-    rgba(255, 255, 255, 0.4),
-    rgb(167, 35, 35, 0.4)
-  );
+  // background-image: linear-gradient(
+  //   to right,
+  //   rgba(167, 35, 35, 0.4),
+  //   rgba(255, 255, 255, 0.4),
+  //   rgb(167, 35, 35, 0.4)
+  // );
   backdrop-filter: blur(10px);
 }
 .modal-content {

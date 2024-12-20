@@ -1,0 +1,144 @@
+
+<app-loader *ngIf="spinnerLoading"></app-loader>
+<div class="container">
+    <div class="header mb-3">
+        <div class="back-to" routerLink="/superadmin/school-list">
+            <span class="mohawak-icon angle-left-icon back-i" ></span>Back To Login List
+        </div>
+        <h2 class="text-center mb-2">Login Master</h2>
+        <div class="">
+            <sky-breadcrumb [breadcrumbItems]="breadcrumbItems"></sky-breadcrumb>
+        </div>
+    </div>
+   
+    <div class="_card-container">
+        <form [formGroup]="addUserForm" (ngSubmit)="submit()">
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              <label>Select Branch*</label>
+              <ng-select 
+              [items]="allSchoolData" 
+              bindLabel="BranchName" 
+              bindValue="BranchID" 
+              formControlName="BranchID" 
+              placeholder="Select Branch"
+              (change)="onBranchSelect($event)">
+            </ng-select>
+             <div *ngIf="addUserForm.controls['BranchID'].invalid && addUserForm.controls['BranchID'].touched" class="text-danger">
+                Branch is required.
+              </div>
+            </div>
+            
+            <div class="col-md-4 mb-3">
+                <label>Login Name*</label>
+                <input type="text" formControlName="LoginName" class="form-control" placeholder="Enter Login Name" />
+                <div *ngIf="addUserForm.controls['LoginName'].invalid && addUserForm.controls['LoginName'].touched" class="text-danger">
+                  Please enter login name
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label>Mobile Number*</label>
+                <input 
+                  type="text" 
+                  (change)="getexist($event, 'MobileNumber')" 
+                  formControlName="MobileNumber" 
+                  class="form-control" 
+                  placeholder="Enter Mobile Number" 
+                />
+                <div 
+                  *ngIf="addUserForm.controls['MobileNumber'].invalid && addUserForm.controls['MobileNumber'].touched" 
+                  class="text-danger">
+                  Valid 10-digit mobile number is required.
+                </div>
+              </div>
+              
+              <div class="col-md-4 mb-3">
+                <label>Email ID*</label>
+                <input 
+                  type="email" 
+                  (change)="getexist($event, 'EmailID')" 
+                  formControlName="EmailID" 
+                  class="form-control" 
+                  placeholder="Enter Email" 
+                />
+                <div 
+                  *ngIf="addUserForm.controls['EmailID'].invalid && addUserForm.controls['EmailID'].touched" 
+                  class="text-danger">
+                  Valid email is required.
+                </div>
+              </div>
+              
+      
+            <div class="col-md-4 mb-3">
+              <label>Role ID*</label>
+              <ng-select [items]="roles" bindLabel="RoleName" bindValue="RoleID" formControlName="RoleID" placeholder="Select Role"></ng-select>
+              <div *ngIf="addUserForm.controls['RoleID'].invalid && addUserForm.controls['RoleID'].touched" class="text-danger">
+                Role is required.
+              </div>
+            </div>
+      
+            <div class="col-md-4 mb-3">
+                <label>Use as Login ID*</label>
+                <ng-select 
+                  formControlName="loginIdSource" 
+                  [items]="[{ id: 'mobile', name: 'Mobile Number' }, { id: 'email', name: 'Email ID' }]"
+                  bindLabel="name" 
+                  bindValue="id" 
+                 [ariaAutoComplete]=""
+                  placeholder="Select Login ID Source">
+                </ng-select>
+                <div *ngIf="addUserForm.controls['loginIdSource'].invalid && addUserForm.controls['loginIdSource'].touched" class="text-danger">
+                  Please select a login ID source.
+                </div>
+              </div>
+              
+      
+            <div class="col-md-4 mb-3">
+              <label>Login ID</label>
+              <input type="text" formControlName="LoginID" class="form-control" placeholder="Login ID will be auto-filled" />
+            </div>
+      
+            <div class="col-md-4 mb-3">
+              <label>Password*</label>
+              <input type="password" formControlName="Password" class="form-control" placeholder="Enter Password" />
+              <div *ngIf="addUserForm.controls['Password'].invalid && addUserForm.controls['Password'].touched" class="text-danger">
+                Password is required and must be at least 6 characters.
+              </div>
+            </div>
+      
+          
+          </div>
+          <div class="col-md-12 mb-3">
+            <label>Module Permission</label>
+            <div class="checkbox-container">
+              <div *ngFor="let module of ModuleNameData; let i = index" class="checkbox-item">
+                <sky-custom-checkbox
+                  [id]="'module' + module.ModuleID"
+                  [value]="module.ModuleID"
+                  [name]="'moduleCheckbox'"
+                  [label]="module.ModuleName"
+                  [group]="'modules'"
+                  (model)="onModuleChange($event)"
+                >
+                </sky-custom-checkbox>
+              </div>
+            </div>
+          </div>
+          <div class="row align-center">
+            <div class="col-md-3 btn-grid">
+                <button class="btn btn-outline-secondary" type="button">
+                    Cancel
+                </button>
+            </div>
+            <div class="col-md-3 btn-grid">
+                <button  class="btn btn-primary" type="submit" [disabled]="!addUserForm.valid">
+                    Create Login
+                </button>
+            </div>
+        </div>
+    
+        </form>
+        
+      </div>
+      
+      

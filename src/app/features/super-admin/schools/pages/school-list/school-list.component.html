@@ -8,7 +8,6 @@
       </div>
     </div>
     <div class="row">
-      <h4>All Schools</h4>
       <div class="col-md-3 col-sm-6">
         <ng-select placeholder="#Select By" (change)="onSearchBY($event)">
           <ng-option *ngFor="let item of searchBy" [value]="item?.id">{{ item?.title }}</ng-option>
@@ -23,14 +22,6 @@
         </ng-select>
       </div>
       <div class="col-md-3 col-sm-2">
-        <ng-select placeholder="#Search By filter">
-          <ng-option *ngFor="let item of limit" [value]="item?.id">{{ item?.title }}</ng-option>
-        </ng-select>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-10 col-lg-10"></div>
-      <div class="col-md-2 col-lg-2 d-grid align-items-end mt-2">
         <button class="btn btn-primary w-100" routerLink="/superadmin/add-school">
           ADD NEW SCHOOL
         </button>
@@ -52,7 +43,10 @@
           <td>{{ row?.ContactNo }}</td>
           <td>{{ row?.EmailID }}</td>
           <td>{{ row?.Address }}</td>
-          <td>{{ row?.status }}</td>
+          <td><i 
+            [ngClass]="getClass(row.status.trim())">
+          </i>
+          {{ row?.status | titlecase }}</td>
           <td>
 
                 <img class="sec_img" (click)="deleteSchool(row?.SchoolID, row?.SchoolName)" src="../../../../../assets/icons/delete.png" width="40px">
@@ -61,19 +55,12 @@
       </ngx-table>
     </div>
   </div>
-  <div class="row mb-4 mt-4">
+  <div class="row mb-2 mt-2">
     <div class="d-flex justify-content-center">
-      <pagination-controls *ngIf="totlRecords > 0" id="pg1" [maxSize]="10" [responsive]="true" [nextLabel]="''"
+      <pagination-controls  id="pg1" [maxSize]="10" [responsive]="true" [nextLabel]="''"
         [previousLabel]="''" (pageChange)="onTablePageChange($event)">
       </pagination-controls>
     </div>
-    <div class="col-md-12">
-        <p  class="text-center mb-4">
-            {{ totlRecords > 0 ? startValue : 0 }} -
-            {{ lastValue > totlRecords ? totlRecords : lastValue }}
-            OF {{ totlRecords > 0 ? totlRecords : 0 }} School
-        </p>
-      </div>
   </div>
 
 

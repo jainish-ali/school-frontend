@@ -3,33 +3,31 @@
 
 .form-control {
     height: 45px;
-    border: 1px solid $color-gray;
+    border: 1px solid $color-bluemain;
     border-radius: 5px;
     color: $color-light-black;
+    background-color: $inputBackgroundColor;
     padding: 0 17px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 
     &:focus {
-        box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.21);
-        @include box-shadow(2px, 2px, 6px, 0, #{var(--color-dark-black)}, 0.21);
-        border: solid 1px $color-blue;
+        border-color: $color-blue;
+        box-shadow: 0 0 8px rgba($color-bluemain, 0.3);
+        @include box-shadow(0, 0, 8px, 0, #{var(--color-blue)}, 0.3);
     }
 
     &.error,
     &:invalid,
-    &.ng-invalid,
-    &.ng-invalid.ng-touched,
-    &.ng-invalid:focus {
-        @include box-shadow();
-        color: $color-red;
+    &.ng-invalid.ng-touched {
         border-color: $color-red;
+        color: $color-red;
+        box-shadow: 0 0 6px rgba($color-red, 0.3);
+        @include box-shadow(0, 0, 6px, 0, #{var(--color-red)}, 0.3);
     }
 
-    //if any form is untouched border should not be red it should be gray untli its tocuhed
-
-    &.ng-untouched{
+    // Untouched fields should have a default gray border
+    &.ng-untouched {
         border-color: $color-gray;
-        
-
     }
 
     &::placeholder {
@@ -37,22 +35,22 @@
     }
 
     &:disabled {
-        background: $color-medium-gray;
-
+        background-color: $color-medium-gray;
+        color: $color-gray;
+        border-color: $color-gray;
+        cursor: not-allowed;
     }
-    @include breakpoint-range($max : sm){
+
+    @include breakpoint-range($max: sm) {
         margin-bottom: 15px;
     }
-    
 }
-
-
 
 // Text Area
 textarea.form-control {
     padding: 17px;
     min-height: 100px;
-    @include breakpoint-range($max : sm){
+    @include breakpoint-range($max: sm) {
         margin-bottom: 15px;
     }
 }
