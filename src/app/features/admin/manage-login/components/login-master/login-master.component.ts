@@ -115,7 +115,7 @@ export class LoginMasterComponent {
         this.notificationService.successAlert('Login Master  added successfully',"yes,go to login list ").subscribe((result) => {
           this.addUserForm.reset();
           if (result.confirmed) {
-            this.router.navigate(['/superadmin/login-list']);
+            this.router.navigate(['/admin/login-list']);
           }
         });
       },
@@ -131,7 +131,7 @@ export class LoginMasterComponent {
     sortby: '',
     sortCode: 'desc',
     page: 0,
-    limit: 10,
+    limit: 1000,
     BranchID:''
   };
   getRole() {

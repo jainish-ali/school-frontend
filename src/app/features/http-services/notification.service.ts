@@ -181,7 +181,7 @@ export class NotificationService {
   
         if (decodedToken?.roleId == 1) {
           this.router.navigate(["superadmin/school-list"]);
-        } else if (decodedToken?.roleId == 2) {
+        } else if (decodedToken?.roleId == 31) {
           this.router.navigate(["admin/manage-role"]);
         } else if (decodedToken?.roleId == 3) {
           this.router.navigate(["inquiry/inquiryform"]);

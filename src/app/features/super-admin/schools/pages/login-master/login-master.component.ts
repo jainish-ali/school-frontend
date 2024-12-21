@@ -121,7 +121,7 @@ export class LoginMasterComponent {
     sortby: '',
     sortCode: 'desc',
     page: 0,
-    limit: 10,
+    limit: 1000,
   };
   getRole() {
     this.schoolService.role(this.param).subscribe({
